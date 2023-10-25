@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Instagram</title>
-</head>
+<%- include("includes/head.ejs") %>
 <body>
     <h1><%=`Welcome to the Instagram Page of @${username}` %></h1>
     <button>Follow</button>
@@ -14,7 +8,16 @@
     <% for(let name of followers){ %>
         <li><%= name %></li>
     <% } %>
+    <p>Followers : <%= data.followers %> &nbsp;
+    Following : <%= data.following %></p>
+    <br>
+    <hr>
+    <% for(let post of data.posts){ %>
+        <img src="<%= post.image %>" alt="Some Image">
+        <p>
+            Likes : <%= post.likes %> &nbsp;
+            Comments : <%= post.comments %></p>
+    <% } %>
+    <%- include("includes/footer.ejs") %>
 </body>
 </html>
-
-    

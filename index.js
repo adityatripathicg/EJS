@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const instaData = require("./data.json")
 
 const port = 8080;
 
@@ -18,8 +19,15 @@ app.get("/rolldice", (req,res)=>{
 app.get("/ig/:username", (req,res)=>{
     const followers = ["SCG","chotu","Sirisha"]
     let { username } = req.params;
+    console.log(instaData)
     console.log(username);
-    res.render("insta.ejs",{username, followers});
+    let data = instaData[username];
+    if(data){
+        res.render("insta.ejs",{username, followers, data});
+    }
+    else{
+        res.render("error.ejs")
+    }
 });
 
 app.get("/hi", (req,res)=>{
