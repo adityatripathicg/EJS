@@ -16,9 +16,10 @@ app.get("/rolldice", (req,res)=>{
 });
 
 app.get("/ig/:username", (req,res)=>{
+    const followers = ["SCG","chotu","Sirisha"]
     let { username } = req.params;
     console.log(username);
-    res.render("insta.ejs",{username});
+    res.render("insta.ejs",{username, followers});
 });
 
 app.get("/hi", (req,res)=>{
